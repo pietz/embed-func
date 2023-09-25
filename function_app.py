@@ -6,7 +6,7 @@ import logging
 import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-# session = ort.InferenceSession("bge-small-en-v1.5.onnx")
+session = ort.InferenceSession("bge-small-en-v1.5.onnx")
 tokenizer = Tokenizer.from_file("tokenizer.json")
 
 
