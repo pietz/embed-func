@@ -6,13 +6,14 @@ import logging
 import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-session = ort.InferenceSession("bge-small-en-v1.5.onnx")
-tokenizer = Tokenizer.from_file("tokenizer.json")
 
 
 @app.route(route="embed")
 def embed(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
+    
+    session = ort.InferenceSession("bge-small-en-v1.5.onnx")
+    tokenizer = Tokenizer.from_file("tokenizer.json")
 
     req_body = req.get_json()
     docs = req_body.get("docs")
