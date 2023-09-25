@@ -14,7 +14,7 @@ def embed(req: func.HttpRequest) -> func.HttpResponse:
 
     session = ort.InferenceSession(
         "bge-small-en-v1.5.onnx",
-        providers=ort.get_available_providers(),
+        providers=["CPUExecutionProvider"],
     )
     tokenizer = Tokenizer.from_file("tokenizer.json")
 
