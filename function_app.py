@@ -6,7 +6,7 @@ import logging
 import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-session = ort.InferenceSession("yolov8n.onnx")
+session = ort.InferenceSession("yolov8s.onnx")
 tokenizer = Tokenizer.from_file("tokenizer.json")
 
 
