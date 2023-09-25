@@ -18,7 +18,6 @@ def embed(req: func.HttpRequest) -> func.HttpResponse:
     docs = req_body.get("docs")
 
     embeddings = []
-    logging.info(f"Processing {len(docs)} documents")
     for doc in docs:
         tok = tokenizer.encode(doc)
         inp = {
