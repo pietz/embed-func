@@ -19,13 +19,13 @@ def embed(req: func.HttpRequest) -> func.HttpResponse:
 
     embeddings = []
     logging.info(f"Processing {len(docs)} documents")
-    # for doc in docs:
-    #     tok = tokenizer.encode(doc)
-    #     inp = {
-    #         "input_ids": np.array(tok.ids, dtype=np.int64)[None, ...],
-    #         "attention_mask": np.array(tok.attention_mask, dtype=np.int64)[None, ...],
-    #         "token_type_ids": np.array(tok.type_ids, dtype=np.int64)[None, ...],
-    #     }
+    for doc in docs:
+        tok = tokenizer.encode(doc)
+        inp = {
+            "input_ids": np.array(tok.ids, dtype=np.int64)[None, ...],
+            "attention_mask": np.array(tok.attention_mask, dtype=np.int64)[None, ...],
+            "token_type_ids": np.array(tok.type_ids, dtype=np.int64)[None, ...],
+        }
     #     embed = session.run(None, inp)[0][0, 0]
     #     if req_body.get("normalize"):
     #         embed = embed / np.linalg.norm(embed)
