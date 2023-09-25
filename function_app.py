@@ -5,9 +5,13 @@ import numpy as np
 import logging
 import json
 
+logging.info("1")
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+logging.info("2")
 session = ort.InferenceSession("yolov8s.onnx")
+logging.info("3")
 tokenizer = Tokenizer.from_file("tokenizer.json")
+logging.info("4")
 
 
 @app.route(route="embed")
