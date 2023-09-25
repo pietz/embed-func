@@ -25,9 +25,9 @@ def embed(req: func.HttpRequest) -> func.HttpResponse:
             "attention_mask": np.array(tok.attention_mask, dtype=np.int64)[None, ...],
             "token_type_ids": np.array(tok.type_ids, dtype=np.int64)[None, ...],
         }
-        # embed = session.run(None, inp)[0][0, 0]
-        # if req_body.get("normalize"):
-        #     embed = embed / np.linalg.norm(embed)
-        # embeddings.append([round(x, 4) for x in embed.tolist()])
+        embed = session.run(None, inp)[0][0, 0]
+        if req_body.get("normalize"):
+            embed = embed / np.linalg.norm(embed)
+        embeddings.append([round(x, 4) for x in embed.tolist()])
 
-    return json.dumps("test")  # embeddings)
+    return json.dumps(embeddings)
