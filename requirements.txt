@@ -4,5 +4,5 @@
 
 azure-functions
 numpy
-onnxruntime
+onnxruntime==1.15.0
 tokenizers
