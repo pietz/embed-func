@@ -12,7 +12,10 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 def embed(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
-    session = ort.InferenceSession("bge-small-en-v1.5.onnx")
+    session = ort.InferenceSession(
+        "bge-small-en-v1.5.onnx",
+        providers=["AzureExecutionProvider", "CPUExecutionProvider"],
+    )
     tokenizer = Tokenizer.from_file("tokenizer.json")
 
     logging.info("Loading model and tokenizer")
