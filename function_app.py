@@ -6,7 +6,7 @@ import logging
 import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-session = ort.InferenceSession("bge-base-en-v1.5.onnx")
+session = ort.InferenceSession("bge-small-en-v1.5.onnx")
 tokenizer = Tokenizer.from_file("tokenizer.json")
 
 
@@ -27,8 +27,8 @@ def embed(req: func.HttpRequest) -> func.HttpResponse:
             "token_type_ids": np.array(tok.type_ids, dtype=np.int64)[None, ...],
         }
         embed = session.run(None, inp)[0][0, 0]
-    #     if req_body.get("normalize"):
-    #         embed = embed / np.linalg.norm(embed)
-    #     embeddings.append([round(x, 4) for x in embed.tolist()])
+        if req_body.get("normalize"):
+            embed = embed / np.linalg.norm(embed)
+        embeddings.append([round(x, 4) for x in embed.tolist()])
 
     return json.dumps("test")  # embeddings)

@@ -1,1 +1,2 @@
 bge-base-en-v1.5.onnx filter=lfs diff=lfs merge=lfs -text
+bge-small-en-v1.5.onnx filter=lfs diff=lfs merge=lfs -text
