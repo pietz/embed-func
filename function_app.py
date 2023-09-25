@@ -1,5 +1,5 @@
 import azure.functions as func
-#from tokenizers import Tokenizer
+from tokenizers import Tokenizer
 #import onnxruntime as ort
 #import numpy as np
 import logging
@@ -7,7 +7,7 @@ import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 #session = ort.InferenceSession("bge-base-en-v1.5.onnx")
-#tokenizer = Tokenizer.from_file("tokenizer.json")
+tokenizer = Tokenizer.from_file("tokenizer.json")
 
 
 @app.route(route="embed")

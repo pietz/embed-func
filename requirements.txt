@@ -5,4 +5,4 @@
 azure-functions
 #numpy
 #onnxruntime
-#tokenizers
+tokenizers
