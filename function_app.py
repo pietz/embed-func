@@ -1,6 +1,6 @@
 import azure.functions as func
 from tokenizers import Tokenizer
-#import onnxruntime as ort
+import onnxruntime as ort
 import numpy as np
 import logging
 import json
