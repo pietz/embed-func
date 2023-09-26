@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          lfs: true
 
       - name: Setup Python version
         uses: actions/setup-python@v1
